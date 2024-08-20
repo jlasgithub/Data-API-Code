@@ -23,7 +23,7 @@ import com.example.demo.domain.Customer;
 
 
 @RestController
-@RequestMapping("/api/customers")
+@RequestMapping("/customers")
 public class CustomerAPI {
     // initialize repo
     @Autowired
