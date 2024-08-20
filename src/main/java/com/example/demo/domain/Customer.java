@@ -1,4 +1,5 @@
 package com.example.demo.domain;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,7 +16,9 @@ public class Customer {
 	
 	@Column(name="CUSTOMER_NAME")
 	String name;
+	
 	String password;
+	
 	String email;
 
 	public long getId() {
@@ -51,4 +54,3 @@ public class Customer {
 	}
 	
 }
-

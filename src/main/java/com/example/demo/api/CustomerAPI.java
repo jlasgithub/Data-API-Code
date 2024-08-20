@@ -1,4 +1,5 @@
 package com.example.demo.api;
+
 import java.net.URI;
 import java.util.Iterator;
 import java.util.Optional;
@@ -23,7 +24,7 @@ import com.example.demo.domain.Customer;
 
 
 @RestController
-@RequestMapping("/api/customers")
+@RequestMapping("/customers")
 public class CustomerAPI {
     // initialize repo
     @Autowired
@@ -46,7 +47,7 @@ public class CustomerAPI {
         if (newCust.getEmail() == null || newCust.getName() == null || newCust.getId() != 0) {
             return ResponseEntity.badRequest().build();
         }
-        
+         
         newCust = repo.save(newCust);
         URI pathCust = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newCust.getId()).toUri();
         ResponseEntity<?> res = ResponseEntity.created(pathCust).build();
@@ -85,3 +86,6 @@ public class CustomerAPI {
 
     
 }
+
+
+
