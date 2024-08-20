@@ -46,7 +46,7 @@ public class CustomerAPI {
         if (newCust.getEmail() == null || newCust.getName() == null || newCust.getId() != 0) {
             return ResponseEntity.badRequest().build();
         }
-        
+         
         newCust = repo.save(newCust);
         URI pathCust = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newCust.getId()).toUri();
         ResponseEntity<?> res = ResponseEntity.created(pathCust).build();
