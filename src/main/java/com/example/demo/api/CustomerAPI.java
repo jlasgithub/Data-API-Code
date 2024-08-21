@@ -68,12 +68,14 @@ public class CustomerAPI {
 			@RequestBody Customer updatedCust,
 			@PathVariable("customerId") long customerId) 
 	{
-		if (updatedCust.getEmail() == null || updatedCust.getName() == null || updatedCust.getId() != 0) {
+		if (updatedCust.getEmail() == null || updatedCust.getName() == null || updatedCust.getId() != customerId) {
             return ResponseEntity.badRequest().build();
         }
 		updatedCust = repo.save(updatedCust);
 		return ResponseEntity.ok().build();
 	}	
+
+    
 
 
 
