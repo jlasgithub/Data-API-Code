@@ -78,6 +78,38 @@ public class CustomerAPI {
 		return ResponseEntity.ok().build();
 	}	
 
+    //lookupCustomerByName GET
+	@GetMapping("/byname/{username}")
+	public ResponseEntity<?> lookupCustomerByNameGet(@PathVariable("username") String username,
+			UriComponentsBuilder uri) {
+		
+		
+		Iterator<Customer> customers = repo.findAll().iterator();
+		while(customers.hasNext()) {
+			Customer cust = customers.next();
+			if(cust.getName().equalsIgnoreCase(username)) {
+				ResponseEntity<?> response = ResponseEntity.ok(cust);
+				return response;				
+			}			
+		}
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+	}
+	
+	//lookupCustomerByName POST
+	@PostMapping("/byname")
+	public ResponseEntity<?> lookupCustomerByNamePost(@RequestBody String username, UriComponentsBuilder uri) {
+		
+		Iterator<Customer> customers = repo.findAll().iterator();
+		while(customers.hasNext()) {
+			Customer cust = customers.next();
+			if(cust.getName().equals(username)) {
+				ResponseEntity<?> response = ResponseEntity.ok(cust);
+				return response;				
+			}			
+		}
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+	}	
+
     
 
 
